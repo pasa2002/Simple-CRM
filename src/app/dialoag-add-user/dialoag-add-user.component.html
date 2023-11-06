@@ -19,27 +19,29 @@
   </mat-form-field>
 </div>
 
-<div mat-dialog-content>
-  <mat-form-field  class=" full-width" appearance="fill">
+<!-- <div mat-dialog-content>
+
+</div> -->
+
+<div mat-dialog-content class="line-1">
+  <mat-form-field class="joined-date" appearance="fill">
+    <mat-label >Team Joined</mat-label>
+    <input [disabled]="loading" [(ngModel)]="user.joined" (dateChange)="onDateChange($event)" matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field   appearance="fill">
     <mat-label>Email</mat-label>
     <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Email">
   </mat-form-field>
 </div>
 
-<div mat-dialog-content>
-  <mat-form-field  class=" full-width" appearance="fill">
-    <mat-label >Birth Date</mat-label>
-    <input [disabled]="loading" [(ngModel)]="birthDate" matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-</div>
-
 
 
 <div mat-dialog-content>
-  <mat-form-field class="full-width" appearance="fill">
+  <mat-form-field class="address" appearance="fill">
     <mat-label >Street + House Nr</mat-label>
     <input [disabled]="loading" [(ngModel)]="user.address" matInput placeholder="Address">
   </mat-form-field>
