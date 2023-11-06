@@ -1,0 +1,16 @@
+mat-toolbar{
+  justify-content: space-between;
+}
+
+
+.login-btn {
+  display:flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  .guest-login{
+    background-color: rgb(85, 178, 194) !important;
+    color: white;
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+Simple CRM
+<button mat-button routerLink="/register">
+  <mat-icon>app_registration</mat-icon>
+  signup
+</button>
+</mat-toolbar>
+
+<div class="form-container mat-elevation-z5">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <mat-form-field>
+      <input matInput placeholder="Email address" formControlName="email">
+      <mat-error *ngIf="email?.errors?.['required']">Email is required</mat-error>
+      <mat-error *ngIf="email?.errors?.['email']">Please enter the correct Email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="password" type="password">
+      <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+    </mat-form-field>
+    <div class="center login-btn">
+      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button  class="guest-login" (click)="loginAsGuest()">
+        Guest Login
+      </button>
+    </div>
+<!--
+    <div class="guest-login">
+
+    </div> -->
+
+
+    <span class="text-center mt-16">New to Simple CRM <a class="sign-up-link " routerLink="/register">Sign Up!</a></span>
+  </form>
+</div>

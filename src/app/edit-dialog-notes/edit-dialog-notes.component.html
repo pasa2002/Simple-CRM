@@ -1,0 +1,19 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Title</mat-label>
+    <input name="note" matInput [(ngModel)]="note.title">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Explain your Todo</mat-label>
+    <textarea name="description" matInput class="textarea" [(ngModel)]="note.description"></textarea>
+  </mat-form-field>
+
+  <div class="example-button-row">
+
+    <button mat-raised-button (click)="updateNote()" color="primary">Save</button>
+    <button mat-raised-button (click)="onNoClick()" color="warn">Cancel</button>
+
+
+  </div>
+</form>

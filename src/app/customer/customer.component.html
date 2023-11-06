@@ -1,0 +1,43 @@
+<button
+(click)="openAddEditPlayerForm()"
+  class="add-player-btn"
+  mat-fab
+  color="primary"
+  matTooltip="Add PLayer"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+
+
+<mat-card>
+  <table class="player-table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Level</th>
+      <th>Exp</th>
+      <th>Salary</th>
+    </tr>
+
+    <tr *ngFor = "let player of allPlayers" [routerLink]="['/player/' + player.customIdName]">
+      <td>{{player.firstName}} {{player.lastName}} </td>
+      <td>{{player.email}}</td>
+      <td>{{player.gender}}</td>
+      <td>{{player.playerLevel}}</td>
+      <td>{{player.experience}} years</td>
+      <td>{{player.salary}} €</td>
+        <div>
+          <button [matMenuTriggerFor]="deleteMenu" (click)="stopPropagation($event)" class="edit-icon" mat-icon-button>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+        <mat-menu #deleteMenu="matMenu">
+          <button (click)="deleteUser($event,player)"  class="delete-btn" mat-menu-item>Delete</button>
+        </mat-menu>
+      </div>
+    </tr>
+  </table>
+
+</mat-card>

@@ -1,0 +1,111 @@
+<mat-card class="player-detail-header">
+
+  <button  [matMenuTriggerFor]="playerMenu"  class="edit-icon" mat-icon-button >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #playerMenu="matMenu">
+    <button (click)="editPlayerDetail()" class="edit-btn" mat-menu-item>Edit</button>
+  </mat-menu>
+  <div class="player-detail-content">
+  <img src="../../assets/img/profile.png" alt="" />
+
+  <div class="player-details">
+    <h2>{{players.firstName}} {{players.lastName}}</h2>
+    <p>{{players.email}}</p>
+  </div>
+</div>
+</mat-card>
+
+<mat-card class="player-detail-body mt-32">
+
+  <div class="player-info-container">
+    <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Gender
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{players.gender}}
+    </mat-card-content>
+  </div>
+  <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Level
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{players.playerLevel}}
+    </mat-card-content>
+  </div>
+  <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Salary
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{players.salary}} €
+    </mat-card-content>
+  </div>
+
+
+  </div>
+
+  <div class="player-info-container">
+    <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Old Team
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{players.oldTeam}}
+    </mat-card-content>
+  </div>
+  <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Joined Date
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{formattedJoinedDate}}
+    </mat-card-content>
+  </div>
+  <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Exp
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{players.experience}} Years
+    </mat-card-content>
+  </div>
+  </div>
+
+
+  <div class="player-info-container-about">
+    <div class="player-info">
+    <mat-card-header>
+      <mat-card-title>
+        Details
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      {{players.about}}
+    </mat-card-content>
+  </div>
+  </div>
+
+
+</mat-card>

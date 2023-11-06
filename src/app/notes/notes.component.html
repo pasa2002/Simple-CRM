@@ -1,0 +1,24 @@
+<button class="add-notes" mat-fab color="primary" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div class="header">
+  <h1>Write Notes About your Player</h1>
+</div>
+
+<div class="card-container">
+<div  *ngFor="let note of allNotes">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{note.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{note.description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="openEdit(note)" color="primary">Edit</button>
+      <button mat-button color="warn" (click)="deleteUser($event,note)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</div>

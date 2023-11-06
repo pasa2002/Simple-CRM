@@ -1,0 +1,37 @@
+.content{
+  padding-top: 1rem;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  mat-form-field{
+    width: unset;
+    max-width: unset;
+    margin-top: 1rem;
+  }
+}
+
+
+.date-form{
+  width: 47% !important;
+  padding-left: 0 !important;
+}
+
+.action{
+  padding-left: 2rem !important;
+
+
+}
+
+.details{
+  width: 100%;
+  padding-left: 1.2rem;
+  padding-right: 3.2rem;
+
+  textarea{
+    max-height: 10vh;
+  }
+}

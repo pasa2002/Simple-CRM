@@ -1,0 +1,23 @@
+<div mat-dialog-content>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label >Street + House Nr</mat-label>
+    <input [disabled]="loading" [(ngModel)]="user.address" matInput placeholder="Address">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-content>
+  <mat-form-field class="mr-16" appearance="fill">
+    <mat-label>Zip code</mat-label>
+    <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Zip Code">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>City</mat-label>
+    <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="City">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-button (click)="saveUser()" [mat-dialog-close]="" cdkFocusInitial>Save</button>
+</div>
