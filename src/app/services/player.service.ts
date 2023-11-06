@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore , AngularFirestoreCollection} from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
 import { Players } from 'src/models/players.class'
 
 @Injectable({
@@ -28,6 +29,16 @@ addPlayers(firstName, lastName,email, date,gender,level,oldTeam,experience,salar
     salary:salary
 
   })
+}
+
+getPlayersWithEarnings() {
+  return this.firestore.collection('players').valueChanges({ idField: 'id' })
+    .pipe(
+      map(players => players.map((player: any) => ({
+        name: `${player.firstName} ${player.lastName}`,
+        salary: player.salary
+      })))
+    );
 }
 
 }

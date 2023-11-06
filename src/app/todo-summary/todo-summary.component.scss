@@ -1,0 +1,15 @@
+.notes-summary-container {
+  display: flex;
+  align-items: center;
+  max-width: 30rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.note-card {
+  margin-bottom: 16px;
+  width: 100%;
+}
+

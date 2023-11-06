@@ -22,7 +22,11 @@
           {{article.description}}
         </p>
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="readMore(article.url)">READ MORE</button>
+      </mat-card-actions>
     </mat-card>
+
 </ng-container>
 
 </section>

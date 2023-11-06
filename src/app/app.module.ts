@@ -42,7 +42,6 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { provideAuth } from '@angular/fire/auth';
 import { NewsComponent } from './news/news.component';
 
-import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -63,8 +62,8 @@ import { CoachExperienceChartComponent } from './coach-experience-chart/coach-ex
 import { TodoSummaryComponent } from './todo-summary/todo-summary.component';
 import { NewsSummaryComponent } from './news-summary/news-summary.component';
 
-
-
+import { NgChartsModule } from 'ng2-charts';
+import { PlayerService } from './services/player.service';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, NewsComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, NewsSummaryComponent],
@@ -107,12 +106,12 @@ import { NewsSummaryComponent } from './news-summary/news-summary.component';
       MatSelectModule,
       HttpClientModule,
       MatTableModule,
-      CanvasJSAngularChartsModule,
+      NgChartsModule
 
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase},
-    NewsapiserviceService
+    NewsapiserviceService,PlayerService
   ],
   bootstrap: [
     AppComponent

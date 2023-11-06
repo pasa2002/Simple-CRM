@@ -25,6 +25,8 @@ ngOnInit(): void {
 handleImageError(event: any, fallbackUrl: string) {
   event.target.src = fallbackUrl;
 }
-
+readMore(url: string): void {
+  window.open(url, "_blank");
+}
 
 }

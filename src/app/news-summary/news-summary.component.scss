@@ -1,0 +1,21 @@
+.example-card {
+  max-width: 400px;
+  height: 29rem;
+}
+
+.example-header-image {
+
+  background-size: cover;
+}
+
+img{
+  padding: 2rem;
+
+}
+
+mat-card-actions{
+  justify-content: center;
+  button{
+    margin-bottom: 1rem;
+  }
+}
