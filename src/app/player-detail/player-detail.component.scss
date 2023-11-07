@@ -54,3 +54,21 @@
   display: flex;
   justify-content: center;
 }
+
+.point-chart{
+  margin-top: 2rem;
+
+  .player-detail-input{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .chart-and-table-container{
+    display: flex;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    gap: 1rem;
+  }
+}

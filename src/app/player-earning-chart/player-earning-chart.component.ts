@@ -17,7 +17,8 @@ export class PlayerEarningChartComponent implements OnInit , AfterViewInit{
   public barChartData: ChartData<'bar'> = {
     labels: [],
     datasets: [
-      { data: [], label: 'Player Earnings' }
+      { data: [], label: 'Player Earnings' },
+      { data: [], label: 'Player Experience' }
     ]
   };
 
@@ -37,8 +38,8 @@ ngOnInit() {
     console.log(players); // Check if players data is being logged
     this.barChartData.labels = players.map(player => player.name);
     this.barChartData.datasets[0].data = players.map(player => player.salary as number);
+    this.barChartData.datasets[1].data = players.map(player => player.experience as number);
     this.cd.detectChanges();
   });
 }
-
 }

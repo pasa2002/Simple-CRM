@@ -109,3 +109,78 @@
 
 
 </mat-card>
+
+<!-- Add this inside your existing mat-card or wherever appropriate -->
+
+
+<mat-card class="point-chart">
+    <form class="player-detail-input" (ngSubmit)="addScore()">
+      <mat-form-field appearance="fill">
+        <mat-label>Score Date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="newScore.date" name="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Score</mat-label>
+        <input matInput [(ngModel)]="newScore.score" name="score" type="number" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Add Score</button>
+    </form>
+
+  <div class="chart-and-table-container">
+    <div class="chart-container" style="display: block; width: 60%;">
+      <canvas baseChart
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="'line'">
+      </canvas>
+    </div>
+    <div class="table-container" style="width: 40%;">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editingElement !== element; else editDate">
+              {{element.date | date}}
+            </div>
+            <ng-template #editDate>
+              <input type="date" [(ngModel)]="element.date">
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <!-- Points Column -->
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef> Points </th>
+          <td mat-cell *matCellDef="let element">
+            <div *ngIf="editingElement !== element; else editPoints">
+              {{element.score}}
+            </div>
+            <ng-template #editPoints>
+              <input type="number" [(ngModel)]="element.score" style="max-width: 3rem;">
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon *ngIf="editingElement !== element" (click)="editScore(element)">edit</mat-icon>
+            <mat-icon *ngIf="editingElement === element"  (click)="saveScore(playerId, element.id)">save</mat-icon>
+            <mat-icon (click)="deleteScore(element.id)">delete</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+</div>
+</mat-card>
+

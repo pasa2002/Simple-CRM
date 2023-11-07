@@ -10,6 +10,7 @@ export class Players{
   salary:number;
   about:string;
   customIdName: string;
+  chartData: any;
 
   constructor(obj?: any) {
     this.firstName = obj?.firstName || '';
@@ -23,6 +24,7 @@ export class Players{
     this.salary = obj?.salary || 0;
     this.about = obj?.about || '';
     this.customIdName = obj?.customIdName || '';
+
   }
 
 
