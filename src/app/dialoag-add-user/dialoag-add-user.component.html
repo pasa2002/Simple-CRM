@@ -26,7 +26,7 @@
 <div mat-dialog-content class="line-1">
   <mat-form-field class="joined-date" appearance="fill">
     <mat-label >Team Joined</mat-label>
-    <input [disabled]="loading" [(ngModel)]="user.joined" (dateChange)="onDateChange($event)" matInput [matDatepicker]="picker">
+    <input (dateChange)="onDateChange($event)" [disabled]="loading" [(ngModel)]="user.experience" matInput [matDatepicker]="picker">
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -34,7 +34,7 @@
 
   <mat-form-field   appearance="fill">
     <mat-label>Email</mat-label>
-    <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Email">
+    <input [disabled]="loading"  [(ngModel)]="user.email" matInput placeholder="Email">
   </mat-form-field>
 </div>
 

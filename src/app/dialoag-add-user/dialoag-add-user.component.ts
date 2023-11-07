@@ -27,7 +27,7 @@ export class DialoagAddUserComponent implements OnInit{
   }
 
   saveUser(): void {
-    this.user.birthDate = this.birthDate.getTime(); // Keep it as a timestamp
+    // this.user.birthDate = this.birthDate.getTime(); // Keep it as a timestamp
 
     console.log('current user is', this.user);
     this.loading = true;
@@ -42,6 +42,19 @@ export class DialoagAddUserComponent implements OnInit{
         this.dialogRef.close();
       });
 }
+formatDate(date: Date): string {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // +1 because months are 0-indexed
+  const year = date.getFullYear();
 
+  return `${month}/${day}/${year}`; // MM/DD/YYYY format
+}
+
+
+onDateChange(event: any): void {
+  const formattedDate = this.formatDate(event.value);
+  console.log('Selected Date:', formattedDate);
+
+}
 
 }

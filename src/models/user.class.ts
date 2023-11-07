@@ -6,7 +6,7 @@ export class User{
   zipCode:number;
   city:string;
   email:string;
-
+  experience:number;
   constructor(obj?:any){
     this.firstName = obj ? obj.firstName :'';
     this.lastName = obj ? obj.lastName :'';
@@ -15,6 +15,7 @@ export class User{
     this.zipCode = obj ? obj.zipCode :'';
     this.city = obj ? obj.city :'';
     this.email = obj ? obj.email :'';
+    this.experience = obj ? obj.experience :0;
   }
 
   public toJSON(){
@@ -25,7 +26,8 @@ export class User{
       address:this.address,
       zipCode:this.zipCode,
       city:this.city,
-      email:this.email
+      email:this.email,
+      experience:this.experience
     }
   }
 }
