@@ -19,6 +19,4 @@ export class UserDataService {
 
     this.firestore.collection('users').doc(userId).collection('data').add(someData);
   }
-
-
 }

@@ -4,14 +4,14 @@
       <th>Name</th>
       <th>Email</th>
       <th>Adress</th>
-      <th>Exp.</th>
+      <th>Inves. Amount</th>
     </tr>
 
     <tr *ngFor = "let user of allUsers" [routerLink]="['/user/' + user.customIdName]">
       <td>{{user.firstName}} {{user.lastName}} </td>
       <td>{{user.email}}</td>
       <td>{{user.address}} , {{user.zipCode}} , {{user.city}}</td>
-      <td>{{user.experience}} Years</td>
+      <td>{{user.investedAmount}} €</td>
         <div>
           <button [matMenuTriggerFor]="deleteMenu" (click)="stopPropagation($event)" class="edit-icon" mat-icon-button>
             <mat-icon>more_vert</mat-icon>

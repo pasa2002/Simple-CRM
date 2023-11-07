@@ -24,17 +24,14 @@
 </div> -->
 
 <div mat-dialog-content class="line-1">
-  <mat-form-field class="joined-date" appearance="fill">
-    <mat-label >Team Joined</mat-label>
-    <input (dateChange)="onDateChange($event)" [disabled]="loading" [(ngModel)]="user.experience" matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+  <mat-form-field   appearance="fill">
+    <mat-label>Inves. Amount</mat-label>
+    <input type="number" [disabled]="loading"  [(ngModel)]="user.investedAmount" matInput placeholder="Inves. Amount">
   </mat-form-field>
 
   <mat-form-field   appearance="fill">
     <mat-label>Email</mat-label>
-    <input [disabled]="loading"  [(ngModel)]="user.email" matInput placeholder="Email">
+    <input type="email" [disabled]="loading"  [(ngModel)]="user.email" matInput placeholder="Email">
   </mat-form-field>
 </div>
 

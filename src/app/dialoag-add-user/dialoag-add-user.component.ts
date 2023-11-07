@@ -42,19 +42,6 @@ export class DialoagAddUserComponent implements OnInit{
         this.dialogRef.close();
       });
 }
-formatDate(date: Date): string {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // +1 because months are 0-indexed
-  const year = date.getFullYear();
 
-  return `${month}/${day}/${year}`; // MM/DD/YYYY format
-}
-
-
-onDateChange(event: any): void {
-  const formattedDate = this.formatDate(event.value);
-  console.log('Selected Date:', formattedDate);
-
-}
 
 }
