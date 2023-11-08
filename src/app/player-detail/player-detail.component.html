@@ -171,9 +171,9 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Actions </th>
           <td mat-cell *matCellDef="let element">
-            <mat-icon *ngIf="editingElement !== element" (click)="editScore(element)">edit</mat-icon>
-            <mat-icon *ngIf="editingElement === element"  (click)="saveScore(playerId, element.id)">save</mat-icon>
-            <mat-icon (click)="deleteScore(element.id)">delete</mat-icon>
+            <mat-icon class="hover-blue" *ngIf="editingElement !== element" (click)="editScore(element)">edit</mat-icon>
+            <mat-icon class="hover-blue" *ngIf="editingElement === element"  (click)="saveScore(playerId, element.id)">save</mat-icon>
+            <mat-icon class="hover-red" (click)="deleteScore(element.id)">delete</mat-icon>
           </td>
         </ng-container>
 

@@ -1,3 +1,5 @@
+mat-card{
+max-width: 36rem;
 .notes-summary-container {
   display: flex;
   align-items: center;
@@ -9,7 +11,18 @@
 }
 
 .note-card {
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
   width: 100%;
 }
+}
+@media (max-width: 600px) {
+  mat-card{
+    max-width: 25rem !important;
+  }
+}
 
+@media (max-width: 410px) {
+  mat-card{
+    max-width: 20rem !important;
+  }
+}

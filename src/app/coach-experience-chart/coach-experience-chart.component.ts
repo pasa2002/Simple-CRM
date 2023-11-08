@@ -10,7 +10,19 @@ export class CoachExperienceChartComponent implements OnInit{
 
   public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    // ... other options specific to pie chart if needed
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+
+          font: {
+            size: 16
+          },
+          padding: 20,
+        }
+      },
+    },
   };
   public pieChartType: ChartType = 'pie';
   public pieChartData: ChartData<'pie'> = {

@@ -4,14 +4,17 @@
 
 
 
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 .mr-16 {
   margin-right: 16px;
 }
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
 
 .full-width{
   width: 100%;
@@ -70,5 +73,21 @@ text-align:center;
 }
 
 
+.hover-blue{
+  &:hover{
+    color: rgb(106, 106, 202);
+    cursor: pointer;
+    transition:  225ms ease-in-out;
+  }
 
 
+}
+
+.hover-red{
+  &:hover{
+    color: rgb(255, 78, 78);
+    cursor: pointer;
+    transition:  225ms ease-in-out;
+  }
+
+}

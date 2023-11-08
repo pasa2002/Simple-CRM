@@ -1,38 +1,37 @@
 
-
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" [opened]="true" mode="side">
+  <mat-drawer #drawer class="sidenav" [opened]="opened" mode="side">
     <div class="logo-container">
     <img src="../assets/img/logo.png" class="logo">
 
   </div>
 
   <ul class="menu-items">
-    <li routerLink="/dashboard">
+    <li (click)="navigateAndCloseDrawer('/dashboard')">
       <span class="material-icons">
         dashboard
         </span>
       Dashboard
     </li>
-    <li routerLink="/user">
+    <li (click)="navigateAndCloseDrawer('/user')">
       <span class="material-icons">
         people
         </span>
         Investors
       </li>
-        <li routerLink="/notes">
+        <li (click)="navigateAndCloseDrawer('/notes')">
           <span class="material-icons">
             notes
             </span>
             Notes
           </li>
-          <li routerLink="/player">
+          <li (click)="navigateAndCloseDrawer('/player')">
             <span class="material-icons">
               person
               </span>
               Player
             </li>
-            <li routerLink="/news">
+            <li (click)="navigateAndCloseDrawer('/news')">
               <span class="material-icons">
                 newspaper
                 </span>

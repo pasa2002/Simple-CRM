@@ -11,7 +11,7 @@ export class PlayerEarningChartComponent implements OnInit , AfterViewInit{
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
-    // ... other options
+    maintainAspectRatio: false,
   };
   public barChartType: ChartType = 'bar';
   public barChartData: ChartData<'bar'> = {

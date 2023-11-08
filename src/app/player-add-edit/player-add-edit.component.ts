@@ -5,13 +5,14 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Players} from 'src/models/players.class';
+import { NbaServiceService } from '../services/nba-service.service';
 
 @Component({
   selector: 'app-player-add-edit',
   templateUrl: './player-add-edit.component.html',
   styleUrls: ['./player-add-edit.component.scss']
 })
-export class PlayerAddEditComponent {
+export class PlayerAddEditComponent implements OnInit{
   playerForm:FormGroup;
   playerLevel : string[] = [
     'Beginner',
@@ -20,13 +21,21 @@ export class PlayerAddEditComponent {
   ]
 
 
-
+  teams: any[] = [];
   players:Players = new Players();
   allplayers = [];
   loading=false;
   constructor(private  _dialog:MatDialog,
     private firestore: AngularFirestore,
+    private nbaService: NbaServiceService,
     public dialogRef:MatDialogRef<PlayerAddEditComponent>){}
+
+    ngOnInit(): void {
+      this.nbaService.getTeams().subscribe(data => {
+        this.teams = data.data;
+        console.log(this.teams)
+      });
+    }
 
   addPlayers(){
     const playersObj = this.players.toJson();

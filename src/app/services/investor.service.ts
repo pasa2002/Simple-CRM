@@ -14,7 +14,6 @@ export class InvestorService {
 
   // Function to get chart data
   getChartData(): Observable<any[]> {
-    // Assuming you have a collection named 'users' where each document is a User
     return this.firestore.collection<User>('users').valueChanges().pipe(
       map(users => users.map(user => {
         // Transform the data as needed for the chart
