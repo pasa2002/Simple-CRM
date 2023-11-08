@@ -1,13 +1,13 @@
 <mat-card>
   <table class="user-table">
-    <tr>
+    <tr class="header">
       <th>Name</th>
       <th>Email</th>
       <th>Adress</th>
       <th>Inves. Amount</th>
     </tr>
 
-    <tr *ngFor = "let user of allUsers" [routerLink]="['/user/' + user.customIdName]">
+    <tr class="content" *ngFor = "let user of allUsers" [routerLink]="['/user/' + user.customIdName]">
       <td>{{user.firstName}} {{user.lastName}} </td>
       <td>{{user.email}}</td>
       <td>{{user.address}} , {{user.zipCode}} , {{user.city}}</td>

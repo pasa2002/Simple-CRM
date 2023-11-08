@@ -47,3 +47,66 @@
 .delete-btn{
   color: red;
 }
+
+@media (max-width: 700px) {
+  .user-table, .user-table thead, .user-table tbody, .user-table th, .user-table td, .user-table tr {
+    display: block;
+  }
+
+  .header{
+    display: none !important;
+  }
+  .user-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .user-table tr { border: 1px solid #ccc; }
+  .user-table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-left: unset !important;
+  }
+  .user-table td:before {
+    position: absolute;
+    top: 15px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+  .user-table td:nth-of-type(1):before { content: "Name"; }
+  .user-table td:nth-of-type(2):before { content: "Email"; }
+  .user-table td:nth-of-type(3):before { content: "Address"; }
+  .user-table td:nth-of-type(4):before { content: "Invest. Amount"; }
+
+  .content{
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .user-table, .user-table th, .user-table td, .add-user-btn {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .user-table, .user-table th, .user-table td, .add-user-btn {
+    font-size: 0.7rem;
+  }
+
+  .add-user-btn{
+    bottom: 0;
+    right: 20px;
+    position: fixed;
+  }
+}
