@@ -40,7 +40,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { provideAuth } from '@angular/fire/auth';
-import { NewsComponent } from './news/news.component';
+
 
 
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -49,7 +49,6 @@ import {HttpClientModule} from '@angular/common/http'
 import { CustomerComponent } from './customer/customer.component';
 import { NotesComponent } from './notes/notes.component';
 import { NotesDialogComponent } from './notes-dialog/notes-dialog.component';
-import { NewsapiserviceService } from './services/newsapiservice.service';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 
@@ -60,13 +59,16 @@ import { EditPlayerComponent } from './edit-player/edit-player.component';
 import { PlayerEarningChartComponent } from './player-earning-chart/player-earning-chart.component';
 import { CoachExperienceChartComponent } from './coach-experience-chart/coach-experience-chart.component';
 import { TodoSummaryComponent } from './todo-summary/todo-summary.component';
-import { NewsSummaryComponent } from './news-summary/news-summary.component';
+
 
 import { NgChartsModule } from 'ng2-charts';
 import { PlayerService } from './services/player.service';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CrmSummaryComponent } from './crm-summary/crm-summary.component';
+
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, NewsComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, NewsSummaryComponent],
+  declarations: [AppComponent, DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent],
 
   imports: [
     BrowserModule,
@@ -106,12 +108,12 @@ import { PlayerService } from './services/player.service';
       MatSelectModule,
       HttpClientModule,
       MatTableModule,
-      NgChartsModule
-
+      NgChartsModule,
+      MatAutocompleteModule
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase},
-    NewsapiserviceService,PlayerService
+    PlayerService
   ],
   bootstrap: [
     AppComponent

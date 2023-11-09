@@ -1,0 +1,21 @@
+<form [formGroup]="playerForm">
+  <div formArrayName="players">
+    <div *ngFor="let playerControl of players.controls; let i = index">
+      <mat-form-field>
+        <input matInput type="text"
+              [matAutocomplete]="auto"
+              [formControlName]="i"
+              placeholder="Enter player name">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let player of filteredPlayers[i] | async" [value]="player">
+            {{ player.first_name }} {{ player.last_name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <!-- You can add a remove button here if needed -->
+    </div>
+  </div>
+  <button mat-icon-button aria-label="Add player" (click)="addPlayerField()">
+    <mat-icon>add</mat-icon>
+  </button>
+</form>

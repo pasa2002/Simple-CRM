@@ -7,11 +7,10 @@ import { map } from 'rxjs/operators';
 })
 export class NewsapiserviceService {
 
-  api_key = 'ca082fbb23574cb7b9c7454621a57704';
   constructor(private http: HttpClient) { }
 
   initArticles() {
-    return this.http.get('https://newsapi.org/v2/everything?q=basketball&apiKey=' + this.api_key)
+    return this.http.get('https://ok.surf/api/v1/cors/news-feed' )
       .pipe(
         map((response: any) => {
           // Assuming response.articles is the array of articles
@@ -24,7 +23,7 @@ export class NewsapiserviceService {
       );
   }
 
-  getArticlesByID(source: String) {
-    return this.http.get('https://newsapi.org/v2/top-headlines/sources?' + source + '&apiKey=' + this.api_key);
-  }
+  // getArticlesByID(category: String) {
+  //   return this.http.get('https://ok.surf/api/v1/cors/news-feed');
+  // }
 }

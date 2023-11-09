@@ -7,13 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { MainComponent } from './main/main.component';
 import { canActivate , redirectUnauthorizedTo , redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { NewsComponent } from './news/news.component';
 import { CustomerComponent } from './customer/customer.component';
 import { NotesComponent } from './notes/notes.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
-
-
-
 
   const redirectLoggedIn = ()=>redirectUnauthorizedTo(['login'])
   const redirectToMain = () => redirectLoggedInTo(['dashboard'])
@@ -54,10 +50,7 @@ const routes: Routes = [
       path: 'player/:id',
       component: PlayerDetailComponent
     },
-    {
-      path: 'news',
-      component: NewsComponent
-    },
+
 
     {
       path: 'player',
@@ -67,6 +60,7 @@ const routes: Routes = [
       path: 'notes',
       component: NotesComponent
     },
+
 
   ]
 }

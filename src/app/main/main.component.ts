@@ -19,24 +19,24 @@ export class MainComponent {
     private renderer: Renderer2
   ) {
     this.checkScreenSize();
-    this.toggleBodyScroll(window.innerWidth <= 1500 && this.opened);
+    this.toggleBodyScroll(window.innerWidth <= 700 && this.opened);
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.checkScreenSize();
-    this.toggleBodyScroll(window.innerWidth <= 1500 && this.opened);
+    this.toggleBodyScroll(window.innerWidth <= 700 && this.opened);
   }
 
   private checkScreenSize() {
-    const isScreenSmall = window.innerWidth <= 1500;
+    const isScreenSmall = window.innerWidth <= 700;
     this.opened = !isScreenSmall;
     this.toggleBodyScroll(this.opened && isScreenSmall);
   }
 
   toggleDrawer() {
     this.opened = !this.opened;
-    this.toggleBodyScroll(this.opened && window.innerWidth <= 1500);
+    this.toggleBodyScroll(this.opened && window.innerWidth <= 700);
   }
 
   private toggleBodyScroll(shouldHideOverflow: boolean) {

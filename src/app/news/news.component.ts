@@ -18,7 +18,7 @@ ngOnInit(): void {
   .subscribe((res:any)=>{
     console.log("response", res);
     this.articles = res.articles;
-
+    console.log(this.articles)
   })
 }
 

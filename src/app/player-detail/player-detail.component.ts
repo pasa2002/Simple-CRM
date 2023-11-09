@@ -184,7 +184,25 @@ editScore(element: any) {
 
 
 deleteScore(scoreId: string): void {
-  // ... your delete score logic
+  if (!scoreId) {
+    console.error('No scoreId provided for deletion');
+    return;
+  }
+
+  this.playerService.deletePlayerScore(this.playerId, scoreId)
+    .then(() => {
+      console.log('Score deleted successfully');
+
+      this.loadScores();
+
+      this.fetchScoresForChart();
+
+      this.cdr.detectChanges();
+    })
+    .catch(error => {
+      console.error('Error deleting score:', error);
+    });
 }
+
 
 }
