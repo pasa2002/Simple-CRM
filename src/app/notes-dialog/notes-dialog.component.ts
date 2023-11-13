@@ -1,7 +1,8 @@
-import { Component, Inject , OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Note } from 'src/models/notes.class';
 import { NotesService } from '../services/notes.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-notes-dialog',
@@ -9,34 +10,41 @@ import { NotesService } from '../services/notes.service';
   styleUrls: ['./notes-dialog.component.scss']
 })
 
+export class NotesDialogComponent implements OnInit {
 
-export class NotesDialogComponent implements OnInit{
-
-  notes:any[]=[];
+  notes: any[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<NotesDialogComponent>,
-    private notesService:NotesService
+    private notesService: NotesService,
+    private snackBar: MatSnackBar
   ) {}
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.notesService.fireStoreCollection.valueChanges()
-    .subscribe(item=>{
-      this.notes = item;
-    })
-}
+      .subscribe(item => {
+        this.notes = item;
+      });
+  }
 
-onNoClick(){
+  onNoClick() {
     this.dialogRef.close();
   }
 
-
-
   addNotes(titleInput: HTMLInputElement, descriptionInput: HTMLInputElement | HTMLTextAreaElement) {
-    this.notesService.addTodo(titleInput.value, descriptionInput.value);
+    const title = titleInput.value.trim();
+    const description = descriptionInput.value.trim();
 
-    this.dialogRef.close();
+    if (title && description) {
+      this.notesService.addTodo(title, description);
+      this.dialogRef.close();
+    } else {
+      // Display a snackbar with an error message
+      this.snackBar.open('Title and Description are required.', 'Close', {
+        duration: 3000, // Duration in milliseconds
+        panelClass: ['snackbar-error'] // Add a custom class for styling
+      });
+    }
+  }
 
-
-}
 }

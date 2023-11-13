@@ -40,7 +40,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { provideAuth } from '@angular/fire/auth';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -110,7 +110,8 @@ import { CrmSummaryComponent } from './crm-summary/crm-summary.component';
       HttpClientModule,
       MatTableModule,
       NgChartsModule,
-      MatAutocompleteModule
+      MatAutocompleteModule,
+      MatSnackBarModule
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase},

@@ -1,5 +1,5 @@
 import { Component , OnInit} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { PlayerService } from '../services/player.service';
 import { DialogRef } from '@angular/cdk/dialog';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -20,7 +20,6 @@ export class PlayerAddEditComponent implements OnInit{
     'Professional'
   ]
 
-
   teams: any[] = [];
   players:Players = new Players();
   allplayers = [];
@@ -28,27 +27,56 @@ export class PlayerAddEditComponent implements OnInit{
   constructor(private  _dialog:MatDialog,
     private firestore: AngularFirestore,
     private nbaService: NbaServiceService,
+    private formBuilder: FormBuilder,
     public dialogRef:MatDialogRef<PlayerAddEditComponent>){}
 
     ngOnInit(): void {
+      this.playerForm = this.formBuilder.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        date: [null, Validators.required],
+        gender: ['', Validators.required],
+        playerLevel: ['', Validators.required],
+        oldTeam: ['', Validators.required],
+        experience: [null, Validators.required],
+        salary: [null, Validators.required],
+        about: ['', Validators.required],
+      });
       this.nbaService.getTeams().subscribe(data => {
         this.teams = data.data;
         console.log(this.teams)
       });
     }
 
-  addPlayers(){
-    const playersObj = this.players.toJson();
-    this.loading = true;
-    this.firestore
-    .collection('players')
-    .add(playersObj)
-    .then((result:any)=>{
-      this.loading = false;
-      this.dialogRef.close();
-    })
+    addPlayers() {
+      console.log('Form Value:', this.playerForm.value);
+      console.log('Form Valid:', this.playerForm.valid);
 
-  }
+      // Check if the form is valid
+      if (this.playerForm.valid) {
+        // Form is valid, proceed with saving the player
+
+        // Convert the form value to Players object
+        this.players = new Players(this.playerForm.value);
+
+        // Add the player to the Firestore collection
+        const playersObj = this.players.toJson();
+        this.loading = true;
+        this.firestore
+          .collection('players')
+          .add(playersObj)
+          .then((result: any) => {
+            this.loading = false;
+            this.dialogRef.close();
+          });
+      } else {
+        // Form is not valid, display an error or take appropriate action
+        console.log('Form is not valid. Please check the fields.');
+      }
+    }
+
+
 
 
   formatDate(date: Date): string {
