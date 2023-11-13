@@ -48,9 +48,13 @@
   color: red;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1066px) {
   .user-table, .user-table thead, .user-table tbody, .user-table th, .user-table td, .user-table tr {
     display: block;
+  }
+
+  .add-user-btn{
+    position: fixed !important;
   }
 
   .header{

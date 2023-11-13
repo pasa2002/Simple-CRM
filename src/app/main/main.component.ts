@@ -1,8 +1,9 @@
-import { Component, HostListener , ViewChild, Renderer2, OnDestroy} from '@angular/core';
+import { Component, HostListener , ViewChild, Renderer2} from '@angular/core';
 import { AuthService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { MatDrawer } from '@angular/material/sidenav';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-main',
@@ -16,10 +17,18 @@ export class MainComponent {
     public authService: AuthService,
     private router: Router,
     private toast: HotToastService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.checkScreenSize();
     this.toggleBodyScroll(window.innerWidth <= 700 && this.opened);
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall // This corresponds to less than 600px width
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.opened = false; // Close the drawer on small screens
+      }
+    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -35,9 +44,10 @@ export class MainComponent {
   }
 
   toggleDrawer() {
-    this.opened = !this.opened;
-    this.toggleBodyScroll(this.opened && window.innerWidth <= 700);
+    this.drawer.toggle(); // This will open/close the drawer
+    this.toggleBodyScroll(this.drawer.opened && window.innerWidth <= 700);
   }
+
 
   private toggleBodyScroll(shouldHideOverflow: boolean) {
 
@@ -45,10 +55,10 @@ export class MainComponent {
     }
 
 
-  ngOnDestroy() {
-    // Make sure to remove the class when the component is destroyed
-    this.renderer.removeClass(document.body, 'overflow-hidden');
-  }
+  // ngOnDestroy() {
+  //   // Make sure to remove the class when the component is destroyed
+  //   this.renderer.removeClass(document.body, 'overflow-hidden');
+  // }
 
   logOut() {
     this.authService.logout()
@@ -66,10 +76,9 @@ export class MainComponent {
 
   navigateAndCloseDrawer(path: string) {
     this.router.navigate([path]).then(() => {
-      if (window.innerWidth <= 1500) {
-        this.opened = false; // This should update the binding and close the drawer
-        // If the above line doesn't work as expected, try using the drawer reference directly:
-        this.drawer.close();
+      if (window.innerWidth <= 700) {
+        this.drawer.close(); // Close the drawer on navigation
+        this.toggleBodyScroll(false);
       }
     });
   }

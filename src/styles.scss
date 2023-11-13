@@ -11,8 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
   margin-right: 16px;
 }
 
-.overflow-hidden {
-  overflow: hidden !important;
+body.overflow-hidden {
+  overflow: hidden;
 }
 
 

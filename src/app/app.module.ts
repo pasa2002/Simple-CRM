@@ -60,15 +60,16 @@ import { PlayerEarningChartComponent } from './player-earning-chart/player-earni
 import { CoachExperienceChartComponent } from './coach-experience-chart/coach-experience-chart.component';
 import { TodoSummaryComponent } from './todo-summary/todo-summary.component';
 
-
+import { NewsComponent } from './news/news.component';
 import { NgChartsModule } from 'ng2-charts';
 import { PlayerService } from './services/player.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CrmSummaryComponent } from './crm-summary/crm-summary.component';
 
 
+
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent],
+  declarations: [AppComponent, NewsComponent ,DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent],
 
   imports: [
     BrowserModule,
