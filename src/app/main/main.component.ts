@@ -1,4 +1,4 @@
-import { Component, HostListener , ViewChild, Renderer2} from '@angular/core';
+import { Component, HostListener , ViewChild, Renderer2, OnDestroy} from '@angular/core';
 import { AuthService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -10,7 +10,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnDestroy{
   opened = true;
   @ViewChild('drawer') drawer: MatDrawer;
   constructor(
@@ -55,10 +55,10 @@ export class MainComponent {
     }
 
 
-  // ngOnDestroy() {
-  //   // Make sure to remove the class when the component is destroyed
-  //   this.renderer.removeClass(document.body, 'overflow-hidden');
-  // }
+  ngOnDestroy() {
+    // Make sure to remove the class when the component is destroyed
+    this.renderer.removeClass(document.body, 'overflow-hidden');
+  }
 
   logOut() {
     this.authService.logout()
@@ -77,7 +77,7 @@ export class MainComponent {
   navigateAndCloseDrawer(path: string) {
     this.router.navigate([path]).then(() => {
       if (window.innerWidth <= 700) {
-        this.drawer.close(); // Close the drawer on navigation
+        this.drawer.close();
         this.toggleBodyScroll(false);
       }
     });

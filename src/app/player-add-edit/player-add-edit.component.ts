@@ -49,6 +49,10 @@ export class PlayerAddEditComponent implements OnInit{
       });
     }
 
+    closeDialog(){
+      this.dialogRef.close()
+    }
+
     addPlayers() {
       console.log('Form Value:', this.playerForm.value);
       console.log('Form Valid:', this.playerForm.valid);

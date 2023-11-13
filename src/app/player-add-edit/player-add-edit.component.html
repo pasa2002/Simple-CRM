@@ -89,7 +89,7 @@
 
 
 <div class="action" type="submit" mat-dialog-actions>
-  <button mat-raised-button >Cancel</button>
+  <button mat-raised-button (click)="closeDialog()">Cancel</button>
   <button mat-raised-button color="primary" (click)="addPlayers()">Save</button>
 </div>
 </form>

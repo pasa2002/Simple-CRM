@@ -21,9 +21,11 @@ const routes: Routes = [
 },
 
 {
-  path:'',
-  component:MainComponent
+  path: '',
+  redirectTo: 'dashboard',
+  pathMatch: 'full'
 },
+
 {
   path:'register',
   component:SignupComponent,

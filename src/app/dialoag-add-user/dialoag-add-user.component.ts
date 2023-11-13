@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
@@ -12,10 +13,20 @@ export class DialoagAddUserComponent implements OnInit{
   user: User = new User();
   birthDate !: Date;
   loading=false;
+  userForm: FormGroup;
   constructor(private firestore:AngularFirestore,
-      public dialogRef:MatDialogRef<DialoagAddUserComponent>
+      public dialogRef:MatDialogRef<DialoagAddUserComponent>,
+      private fb:FormBuilder
     ){
-
+      this.userForm = this.fb.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        investedAmount: [null, [Validators.required, Validators.min(0)]],
+        email: ['', [Validators.required, Validators.email]],
+        address: ['', Validators.required],
+        zipCode: ['', Validators.required],
+        city: ['', Validators.required],
+      });
   }
 
   ngOnInit():void{
@@ -27,21 +38,22 @@ export class DialoagAddUserComponent implements OnInit{
   }
 
   saveUser(): void {
-    // this.user.birthDate = this.birthDate.getTime(); // Keep it as a timestamp
+    if (this.userForm.valid) {
+      this.loading = true;
+      const userObj = { ...this.userForm.value }; // Clone the form value
 
-    console.log('current user is', this.user);
-    this.loading = true;
-    const userObj = this.user.toJSON();
-
-    this.firestore
-      .collection('users')
-      .add(userObj)
-      .then((result: any) => {
-        this.loading = false;
-        console.log('adding user finished', result)
-        this.dialogRef.close();
-      });
+      this.firestore
+        .collection('users')
+        .add(userObj)
+        .then((result: any) => {
+          this.loading = false;
+          console.log('Adding user finished', result);
+          this.dialogRef.close();
+        });
+    } else {
+      // Mark form controls as touched to show validation messages
+      this.userForm.markAllAsTouched();
+    }
+  }
 }
 
-
-}
