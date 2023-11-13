@@ -18,6 +18,7 @@ export class MainComponent implements OnDestroy{
     private router: Router,
     private toast: HotToastService,
     private renderer: Renderer2,
+    private renderer2: Renderer2,
     private breakpointObserver: BreakpointObserver
   ) {
     this.checkScreenSize();
@@ -55,10 +56,11 @@ export class MainComponent implements OnDestroy{
     }
 
 
-  ngOnDestroy() {
-    // Make sure to remove the class when the component is destroyed
-    this.renderer.removeClass(document.body, 'overflow-hidden');
-  }
+    ngOnDestroy() {
+      // Make sure to remove the class when the component is destroyed
+      this.renderer.removeClass(document.body, 'overflow-hidden');
+    }
+
 
   logOut() {
     this.authService.logout()

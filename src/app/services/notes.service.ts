@@ -34,5 +34,14 @@ export class NotesService {
       );
   }
 
+  getNotesCount(): Observable<number> {
+    return this.firestore.collection('todos')
+      .get()
+      .pipe(
+        map(querySnapshot => querySnapshot.size)
+      );
+  }
+
+
 
 }

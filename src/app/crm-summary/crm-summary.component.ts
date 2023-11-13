@@ -28,8 +28,8 @@ export class CrmSummaryComponent implements OnInit{
   }
 
   getNotesCount() {
-    this.notesService.getNotes().subscribe(notes => {
-      this.notesCount = notes.length;
+    this.notesService.getNotesCount().subscribe(count => {
+      this.notesCount = count;
     });
   }
 
@@ -47,7 +47,8 @@ export class CrmSummaryComponent implements OnInit{
 
   getTotalInvested() {
     this.investorService.getChartData().subscribe(investors => {
-      this.totalInvested = investors.reduce((acc, investor) => acc + investor.investedAmount, 0);
+      this.totalInvested = investors.reduce((acc, investor) => acc + Number(investor.investedAmount), 0);
     });
   }
+
 }
