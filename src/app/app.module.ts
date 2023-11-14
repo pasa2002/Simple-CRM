@@ -65,11 +65,14 @@ import { NgChartsModule } from 'ng2-charts';
 import { PlayerService } from './services/player.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CrmSummaryComponent } from './crm-summary/crm-summary.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { InfoComponent } from './info/info.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NewsComponent ,DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent],
+  declarations: [AppComponent, NewsComponent ,DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent, ImprintComponent, PrivacyPolicyComponent, InfoComponent],
 
   imports: [
     BrowserModule,

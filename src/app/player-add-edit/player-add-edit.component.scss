@@ -34,3 +34,16 @@
     max-height: 10vh;
   }
 }
+
+
+
+@media (max-width: 670px) {
+  .row{
+    display: flex;
+    flex-direction: column;
+
+    mat-form-field{
+      width: 100% !important;
+    }
+  }
+}

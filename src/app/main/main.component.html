@@ -31,7 +31,23 @@
               </span>
               Player
             </li>
+            <div class="legal">
+            <li (click)="navigateAndCloseDrawer('/imprint')">
+              <span class="material-icons">
+                info
+                </span>
+                Legal Notice
+              </li>
+              <li (click)="navigateAndCloseDrawer('/privacy')">
+                <span class="material-icons">
+                  info
+                  </span>
+                  Privacy Policy
+                </li>
+            </div>
   </ul>
+
+
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -41,7 +57,12 @@
             <mat-icon class="menu-img">menu</mat-icon>
         </button>
 
-
+        <div>
+          <button routerLink="/info" mat-button type="button">
+            <mat-icon>
+              info
+            </mat-icon>
+          </button>
         <ng-container *ngIf="authService.currentUser$ |async as user">
           <button mat-button [matMenuTriggerFor]="userMenu">
             <mat-icon>account_circle</mat-icon>
@@ -49,8 +70,10 @@
             <mat-icon>expand_more</mat-icon>
           </button>
         </ng-container>
+      </div>
       </mat-toolbar-row>
     </mat-toolbar>
+
   <div class="router-container">
     <div>
     <router-outlet></router-outlet>

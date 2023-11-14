@@ -6,6 +6,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {Players} from 'src/models/players.class';
 import { NbaServiceService } from '../services/nba-service.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-player-add-edit',
@@ -28,6 +30,7 @@ export class PlayerAddEditComponent implements OnInit{
     private firestore: AngularFirestore,
     private nbaService: NbaServiceService,
     private formBuilder: FormBuilder,
+    private afAuth: AngularFireAuth,
     public dialogRef:MatDialogRef<PlayerAddEditComponent>){}
 
     ngOnInit(): void {

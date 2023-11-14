@@ -76,3 +76,17 @@ mat-toolbar-row{
 
 }
 
+.legal{
+position: absolute;
+bottom: 20px;
+width: 100%;
+}
+
+@media (max-width: 500px) {
+  .router-container{
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+
+  }
+
+}

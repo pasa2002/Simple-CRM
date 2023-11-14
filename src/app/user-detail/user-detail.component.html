@@ -22,9 +22,11 @@
   <button  [matMenuTriggerFor]="addressMenu"  class="edit-icon" mat-icon-button >
     <mat-icon>more_vert</mat-icon>
   </button>
+
   <mat-menu #addressMenu="matMenu">
     <button (click)="editMenu()" class="edit-btn" mat-menu-item>Edit</button>
   </mat-menu>
+  <div>
   <mat-card-header>
     <mat-card-title>
       Address
@@ -35,4 +37,14 @@
     {{user.address}} <br>
     {{user.zipCode}} {{user.city}}
   </mat-card-content>
+</div>
+  <div class="amount">
+    <mat-card-title>
+      Invested Amount
+    </mat-card-title>
+    <mat-card-content>
+      {{user.investedAmount}}
+    </mat-card-content>
+  </div>
 </mat-card>
+

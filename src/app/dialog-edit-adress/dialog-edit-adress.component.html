@@ -16,6 +16,12 @@
     <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="City">
   </mat-form-field>
 </div>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Inves. Amount</mat-label>
+    <input [disabled]="loading"  [(ngModel)]="user.investedAmount" type="number" matInput placeholder="Inves. Amount" />
+  </mat-form-field>
+</div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="dialogRef.close()">Cancel</button>

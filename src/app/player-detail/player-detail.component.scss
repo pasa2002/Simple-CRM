@@ -74,6 +74,17 @@
   }
 }
 
+@media (max-width: 1050px){
+  form{
+    flex-direction: column;
+  }
+
+  .chart-and-table-container{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+}
 
 @media (max-width: 600px) {
 

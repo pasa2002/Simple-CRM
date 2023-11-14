@@ -12,7 +12,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-
+    isGuest:boolean;
     loginForm = new FormGroup({
     email:new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-
+    this.authService.currentUser$.subscribe((user) => {
+      this.isGuest = !user;
+    });
   }
 
 
@@ -67,17 +69,22 @@ export class LoginComponent implements OnInit{
     const guestPassword = 'guest1';
 
     this.authService
-        .login(guestEmail, guestPassword)
-        .pipe(
-          this.toast.observe({
-            success: 'Logged in as a guest successfully',
-            loading: 'Logging in as a guest...',
-            error: ({ message }) => `There was an error: ${message} `,
-          })
-        )
-        .subscribe(() => {
-          this.router.navigate(['/dashboard']);
-        });
+      .login(guestEmail, guestPassword)
+      .pipe(
+        this.toast.observe({
+          success: 'Logged in as a guest successfully',
+          loading: 'Logging in as a guest...',
+          error: ({ message }) => `There was an error: ${message} `,
+        })
+      )
+      .subscribe(() => {
+        // After successful login, get the user ID and navigate to the dashboard
+        const userId = this.authService.getUserId();
+        if (userId) {
+          this.router.navigate(['/dashboard', userId]);
+        }
+      });
   }
+
 
 }
