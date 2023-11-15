@@ -12,6 +12,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class MainComponent implements OnDestroy{
   opened = true;
+  isScreenSmall = false;
   @ViewChild('drawer') drawer: MatDrawer;
   constructor(
     public authService: AuthService,
@@ -39,9 +40,9 @@ export class MainComponent implements OnDestroy{
   }
 
   private checkScreenSize() {
-    const isScreenSmall = window.innerWidth <= 700;
-    this.opened = !isScreenSmall;
-    this.toggleBodyScroll(this.opened && isScreenSmall);
+    this.isScreenSmall = window.innerWidth <= 700;
+    this.opened = !this.isScreenSmall;
+    this.toggleBodyScroll(this.opened && this.isScreenSmall);
   }
 
   toggleDrawer() {

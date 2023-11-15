@@ -33,15 +33,14 @@ import { EditDialogUserComponent } from './edit-dialog-user/edit-dialog-user.com
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { Auth, getAuth } from '@firebase/auth';
+import {  getAuth } from '@firebase/auth';
 import { HeaderSidebarComponent } from './header-sidebar/header-sidebar.component';
 import { MainComponent } from './main/main.component';
-import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { provideAuth } from '@angular/fire/auth';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatSortModule} from '@angular/material/sort';
 
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -60,7 +59,7 @@ import { PlayerEarningChartComponent } from './player-earning-chart/player-earni
 import { CoachExperienceChartComponent } from './coach-experience-chart/coach-experience-chart.component';
 import { TodoSummaryComponent } from './todo-summary/todo-summary.component';
 
-import { NewsComponent } from './news/news.component';
+
 import { NgChartsModule } from 'ng2-charts';
 import { PlayerService } from './services/player.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -72,7 +71,7 @@ import { InfoComponent } from './info/info.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NewsComponent ,DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent, ImprintComponent, PrivacyPolicyComponent, InfoComponent],
+  declarations: [AppComponent ,DashboardComponent, UserComponent, DialoagAddUserComponent, UserDetailComponent, DialogEditAdressComponent, EditDialogUserComponent, LoginComponent, SignupComponent, HeaderSidebarComponent, MainComponent, CustomerComponent, NotesComponent, NotesDialogComponent, EditDialogNotesComponent, PlayerAddEditComponent, PlayerDetailComponent, EditPlayerComponent, PlayerEarningChartComponent, CoachExperienceChartComponent, TodoSummaryComponent, CrmSummaryComponent, ImprintComponent, PrivacyPolicyComponent, InfoComponent],
 
   imports: [
     BrowserModule,
@@ -114,7 +113,8 @@ import { InfoComponent } from './info/info.component';
       MatTableModule,
       NgChartsModule,
       MatAutocompleteModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatSortModule
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase},

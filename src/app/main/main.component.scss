@@ -37,7 +37,7 @@ mat-toolbar-row{
 }
 
 .logo{
-  width: 200px;
+  width: 4.6rem;
 
 
 }
@@ -87,6 +87,21 @@ width: 100%;
     padding-left: 0.6rem;
     padding-right: 0.6rem;
 
+  }
+
+}
+
+
+@media(max-width:700px){
+  .logo-container{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 16px;
+    align-items: center;
+  }
+  .close-btn {
+    margin-right: 16px;
+    margin-left: auto;
   }
 
 }

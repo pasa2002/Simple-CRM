@@ -51,8 +51,6 @@ export class EditPlayerComponent implements OnInit{
 
   onDateChange(event: any): void {
     const formattedDate = this.formatDate(event.value);
-    console.log('Selected Date:', formattedDate);
-
   }
 
   getPlayers(){

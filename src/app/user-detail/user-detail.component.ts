@@ -22,8 +22,6 @@ export class UserDetailComponent implements OnInit{
     this.route.paramMap.subscribe(paramMap=>{
       this.userId = paramMap.get('id');
 
-      console.log(this.userId)
-
       this.getUser();
     })
   }
@@ -35,7 +33,6 @@ export class UserDetailComponent implements OnInit{
     .valueChanges()
     .subscribe((user:any)=>{
       this.user = new User(user);
-      console.log('retreibes User', this.user)
     })
   }
 

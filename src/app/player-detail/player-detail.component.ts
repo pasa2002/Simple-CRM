@@ -39,7 +39,7 @@ export class PlayerDetailComponent implements OnInit{
     this.route.paramMap.subscribe(paramMap => {
       this.playerId  = paramMap.get('id');
 
-      console.log(this.playerId);
+
       this.getPlayer();
     })
     this.fetchScoresForChart();
@@ -54,8 +54,7 @@ export class PlayerDetailComponent implements OnInit{
     .subscribe((user:any)=>{
       this.players = new Players(user);
       this.formattedJoinedDate = this.formatFirestoreTimestamp(this.players.date);
-      console.log(this.formattedJoinedDate)
-      console.log('retirbves PLayer', this.players)
+
     })
   }
 
@@ -97,7 +96,6 @@ addScore() {
 
     this.playerService.addPlayerScore(this.playerId, scoreWithFirestoreDate)
       .then(() => {
-        console.log('Score added successfully');
         // You might want to fetch the updated scores here to update the chart
         this.fetchScoresForChart();
       })
@@ -165,7 +163,6 @@ saveScore(playerId: string, scoreId: string) {
 
   this.playerService.updatePlayerScore(playerId, scoreId, updatedScoreData)
     .then(() => {
-      console.log('Score updated successfully');
       this.editingElement = null; // Reset the editing state
       this.loadScores(); // Reload the scores to reflect the update
       this.cdr.detectChanges(); // Trigger change detection
@@ -191,7 +188,6 @@ deleteScore(scoreId: string): void {
 
   this.playerService.deletePlayerScore(this.playerId, scoreId)
     .then(() => {
-      console.log('Score deleted successfully');
 
       this.loadScores();
 

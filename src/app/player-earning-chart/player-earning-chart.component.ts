@@ -35,7 +35,6 @@ export class PlayerEarningChartComponent implements OnInit , AfterViewInit{
 
 ngOnInit() {
   this.playerService.getPlayersWithEarnings().subscribe(players => {
-    console.log(players); // Check if players data is being logged
     this.barChartData.labels = players.map(player => player.name);
     this.barChartData.datasets[0].data = players.map(player => player.salary as number);
     this.barChartData.datasets[1].data = players.map(player => player.experience as number);

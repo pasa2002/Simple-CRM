@@ -1,29 +1,28 @@
 <mat-card>
-  <table class="user-table">
+  <table class="user-table" matSort (matSortChange)="announceSortChange($event)">
     <tr class="header">
       <th>Name</th>
       <th>Email</th>
-      <th>Adress</th>
-      <th>Inves. Amount</th>
+      <th>Address</th>
+      <th mat-sort-header matColumnDef="investedAmount" sortActionDescription="Sort by Invested Amount">Inves. Amount</th>
     </tr>
 
-    <tr class="content" *ngFor = "let user of allUsers" [routerLink]="['/user/' + user.customIdName]">
-      <td>{{user.firstName}} {{user.lastName}} </td>
-      <td>{{user.email}}</td>
-      <td>{{user.address}} , {{user.zipCode}} , {{user.city}}</td>
-      <td>{{user.investedAmount}} €</td>
-        <div>
-          <button [matMenuTriggerFor]="deleteMenu" (click)="stopPropagation($event)" class="edit-icon" mat-icon-button>
-            <mat-icon>more_vert</mat-icon>
-          </button>
+    <tr class="content" *ngFor="let user of allUsers" [routerLink]="['/user/' + user.customIdName]">
+      <td>{{ user.firstName }} {{ user.lastName }} </td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.address }}, {{ user.zipCode }}, {{ user.city }}</td>
+      <td>{{ user.investedAmount }} €</td>
+      <div>
+        <button [matMenuTriggerFor]="deleteMenu" (click)="stopPropagation($event)" class="edit-icon" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
 
         <mat-menu #deleteMenu="matMenu">
-          <button (click)="deleteUser($event,user)" class="delete-btn" mat-menu-item>Delete</button>
+          <button (click)="deleteUser($event, user)" class="delete-btn" mat-menu-item>Delete</button>
         </mat-menu>
       </div>
     </tr>
   </table>
-
 </mat-card>
 
 <button

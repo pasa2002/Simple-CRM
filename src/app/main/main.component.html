@@ -2,9 +2,12 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" [opened]="opened" mode="side">
     <div class="logo-container">
-    <img src="../assets/img/logo.png" class="logo">
-
+    <img src="../assets/img/logo-2.png" class="logo">
+    <button *ngIf="isScreenSmall" mat-icon-button (click)="toggleDrawer()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
+
 
   <ul class="menu-items">
     <li (click)="navigateAndCloseDrawer('/dashboard')">

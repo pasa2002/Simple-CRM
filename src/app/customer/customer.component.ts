@@ -35,7 +35,6 @@ export class CustomerComponent implements AfterViewInit, OnInit {
     this.firestore.collection('players')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
-        console.log("Data", changes);
         this.allPlayers = changes;
       });
   }

@@ -8,6 +8,8 @@ import {Players} from 'src/models/players.class';
 import { NbaServiceService } from '../services/nba-service.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from 'firebase/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-player-add-edit',
@@ -31,6 +33,7 @@ export class PlayerAddEditComponent implements OnInit{
     private nbaService: NbaServiceService,
     private formBuilder: FormBuilder,
     private afAuth: AngularFireAuth,
+    private snackBar: MatSnackBar,
     public dialogRef:MatDialogRef<PlayerAddEditComponent>){}
 
     ngOnInit(): void {
@@ -57,8 +60,6 @@ export class PlayerAddEditComponent implements OnInit{
     }
 
     addPlayers() {
-      console.log('Form Value:', this.playerForm.value);
-      console.log('Form Valid:', this.playerForm.valid);
 
       // Check if the form is valid
       if (this.playerForm.valid) {
@@ -77,10 +78,11 @@ export class PlayerAddEditComponent implements OnInit{
             this.loading = false;
             this.dialogRef.close();
           });
-      } else {
-        // Form is not valid, display an error or take appropriate action
-        console.log('Form is not valid. Please check the fields.');
-      }
+      }else {
+        // Form is not valid, display an error using snackbar
+        this.snackBar.open('Form is not valid. Please check the fields.', 'Close', {
+          duration: 5000, // Adjust the duration as needed
+        });}
     }
 
 
@@ -97,7 +99,6 @@ export class PlayerAddEditComponent implements OnInit{
 
   onDateChange(event: any): void {
     const formattedDate = this.formatDate(event.value);
-    console.log('Selected Date:', formattedDate);
 
   }
 

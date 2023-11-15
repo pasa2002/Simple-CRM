@@ -47,7 +47,6 @@ export class DialoagAddUserComponent implements OnInit{
         .add(userObj)
         .then((result: any) => {
           this.loading = false;
-          console.log('Adding user finished', result);
           this.dialogRef.close();
         });
     } else {

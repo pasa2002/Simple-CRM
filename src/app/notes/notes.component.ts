@@ -32,7 +32,6 @@ export class NotesComponent implements OnInit {
     this.firestore.collection('todos')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
-        console.log('added', changes)
         this.allNotes = changes;
       });
   }
