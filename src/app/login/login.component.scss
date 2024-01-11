@@ -23,3 +23,9 @@ img{
 mat-form-field{
   margin-bottom: 0.5rem;
 }
+
+@media only screen and (max-width: 375px) {
+  .form-container{
+    margin:80px auto auto !important;
+  }
+}

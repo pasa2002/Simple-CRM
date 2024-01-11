@@ -5,3 +5,9 @@ mat-toolbar{
 img{
   width: 3rem;
 }
+
+@media only screen and (max-width: 375px) {
+.form-container{
+  margin: 55px auto auto !important;
+}
+}
