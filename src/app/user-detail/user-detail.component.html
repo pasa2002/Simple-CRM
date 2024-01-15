@@ -37,14 +37,29 @@
     {{user.address}} <br>
     {{user.zipCode}} {{user.city}}
   </mat-card-content>
-</div>
+
   <div class="amount">
     <mat-card-title>
       Invested Amount
     </mat-card-title>
     <mat-card-content>
-      {{user.investedAmount}}
+      {{user.investedAmount}} €
     </mat-card-content>
   </div>
+</div>
+
+<div class="notes">
+  <mat-card-title>
+    Notes
+  </mat-card-title>
+  <p>
+    {{user.notes}}
+  </p>
+
+
+</div>
+
+
+
 </mat-card>
 

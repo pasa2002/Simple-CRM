@@ -11,7 +11,6 @@ import { User } from 'src/models/user.class';
 })
 export class DialoagAddUserComponent implements OnInit{
   user: User = new User();
-  birthDate !: Date;
   loading=false;
   userForm: FormGroup;
   constructor(private firestore:AngularFirestore,
@@ -26,6 +25,7 @@ export class DialoagAddUserComponent implements OnInit{
         address: ['', Validators.required],
         zipCode: ['', Validators.required],
         city: ['', Validators.required],
+        notes:['',Validators.required]
       });
   }
 

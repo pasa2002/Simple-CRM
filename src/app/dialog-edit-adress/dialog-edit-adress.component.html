@@ -16,10 +16,17 @@
     <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="City">
   </mat-form-field>
 </div>
-<div mat-dialog-content>
+
+
+<div mat-dialog-content class="last-row">
   <mat-form-field appearance="fill">
     <mat-label>Inves. Amount</mat-label>
     <input [disabled]="loading"  [(ngModel)]="user.investedAmount" type="number" matInput placeholder="Inves. Amount" />
+  </mat-form-field>
+
+  <mat-form-field class="notes" appearance="fill">
+    <mat-label>Notes</mat-label>
+    <textarea [disabled]="loading" [(ngModel)]="user.notes" type="text" matInput placeholder="Notes"></textarea>
   </mat-form-field>
 </div>
 

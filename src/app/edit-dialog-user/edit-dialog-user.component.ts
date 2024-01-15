@@ -13,7 +13,7 @@ export class EditDialogUserComponent {
 loading=false;
 user:User;
 userId:string;
-birthDate:Date;
+
 
 constructor(public dialogRef:MatDialogRef<DialoagAddUserComponent>,
   private fireStore:AngularFirestore,){}

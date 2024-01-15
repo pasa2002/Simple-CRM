@@ -52,6 +52,14 @@
         <mat-error *ngIf="userForm.get('city').hasError('required')">City is required</mat-error>
       </mat-form-field>
     </div>
+
+    <div >
+      <mat-form-field class="notes" appearance="fill">
+        <mat-label>Notes</mat-label>
+        <textarea formControlName="notes" name="notes" type="text" matInput></textarea>
+        <mat-error *ngIf="userForm.get('city').hasError('required')">Note is required</mat-error>
+      </mat-form-field>
+    </div>
   </div>
 
   <div mat-dialog-actions>
