@@ -1,7 +1,9 @@
 import { Component, OnInit , ChangeDetectorRef , AfterViewInit} from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { PlayerService } from '../services/player.service';
-
+/**
+ * PlayerEarningChartComponent displays a bar chart of player earnings and experience.
+ */
 @Component({
   selector: 'app-player-earning-chart',
   templateUrl: './player-earning-chart.component.html',
@@ -24,7 +26,10 @@ export class PlayerEarningChartComponent implements OnInit , AfterViewInit{
 
   constructor(private playerService: PlayerService,
     private cd: ChangeDetectorRef) {}
-
+  /**
+   * Lifecycle hook called after the component's view is initialized.
+   * Fetches player data with earnings and updates the chart.
+   */
 
     ngAfterViewInit() {
       this.playerService.getPlayersWithEarnings().subscribe(players => {
@@ -32,7 +37,10 @@ export class PlayerEarningChartComponent implements OnInit , AfterViewInit{
         this.cd.detectChanges(); // Trigger change detection
       });
     }
-
+  /**
+   * Lifecycle hook called when the component is initialized.
+   * Fetches player data with earnings and updates the chart data.
+   */
 ngOnInit() {
   this.playerService.getPlayersWithEarnings().subscribe(players => {
     this.barChartData.labels = players.map(player => player.name);

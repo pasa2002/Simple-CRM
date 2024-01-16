@@ -12,18 +12,31 @@ import { AuthService } from '../services/authentication.service'; // Update with
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
+/**
+ * Represents the Notes Component.
+ * This component manages the display and interaction with notes.
+ */
 export class NotesComponent implements OnInit {
   notes: Note[] = [];
   allNotes = [];
   isGuest: boolean;
-
+  /**
+   * Constructs the Notes Component.
+   * @param dialog MatDialog service for opening dialogs.
+   * @param notesService NotesService for managing notes.
+   * @param firestore AngularFirestore for interacting with Firestore.
+   * @param authService AuthService for user authentication.
+   */
   constructor(
     private dialog: MatDialog,
     private notesService: NotesService,
     private firestore: AngularFirestore,
     private authService: AuthService // Add AuthService
   ) {}
-
+  /**
+   * Initializes the component and subscribes to user authentication changes.
+   * Also fetches notes from Firestore.
+   */
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
       this.isGuest = this.authService.getIsGuest();
@@ -35,13 +48,18 @@ export class NotesComponent implements OnInit {
         this.allNotes = changes;
       });
   }
-
+  /**
+   * Opens the dialog for adding a new note.
+   */
   openDialog(): void {
     if (!this.isGuest) {
       const dialogRef = this.dialog.open(NotesDialogComponent, {});
     }
   }
-
+  /**
+   * Opens the dialog for editing an existing note.
+   * @param note The note to be edited.
+   */
   openEdit(note: Note): void {
     if (!this.isGuest) {
       const dialogRef = this.dialog.open(EditDialogNotesComponent, {
@@ -50,7 +68,11 @@ export class NotesComponent implements OnInit {
       });
     }
   }
-
+  /**
+   * Deletes a note.
+   * @param event The click event.
+   * @param note The note to be deleted.
+   */
   deleteUser(event: Event, note: any): void {
     if (!this.isGuest) {
       event.stopPropagation();
@@ -67,7 +89,10 @@ export class NotesComponent implements OnInit {
         });
     }
   }
-
+  /**
+   * Stops event propagation.
+   * @param event The click event.
+   */
   stopPropagation(event: Event): void {
     event.stopPropagation();
   }

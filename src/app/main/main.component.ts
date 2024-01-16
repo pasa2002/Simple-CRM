@@ -10,10 +10,25 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
+
+/**
+ * Represents the Main Component.
+ * This component serves as the main layout for the application.
+ */
 export class MainComponent implements OnDestroy{
   opened = true;
   isScreenSmall = false;
   @ViewChild('drawer') drawer: MatDrawer;
+   /**
+   * Constructs the Main Component.
+   * @param authService Service for user authentication.
+   * @param router Service for navigating between routes.
+   * @param toast Service for displaying toast notifications.
+   * @param renderer Renderer2 for manipulating the DOM.
+   * @param renderer2 Renderer2 for manipulating the DOM.
+   * @param breakpointObserver BreakpointObserver for detecting screen size changes.
+   */
+
   constructor(
     public authService: AuthService,
     private router: Router,
@@ -32,13 +47,18 @@ export class MainComponent implements OnDestroy{
       }
     });
   }
-
+  /**
+   * Host listener for window resize events.
+   * @param event The window resize event.
+   */
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.checkScreenSize();
     this.toggleBodyScroll(window.innerWidth <= 700 && this.opened);
   }
-
+  /**
+   * Checks the screen size and adjusts the sidebar and body scroll accordingly.
+   */
   private checkScreenSize() {
     this.isScreenSmall = window.innerWidth <= 700;
     this.opened = !this.isScreenSmall;
@@ -49,7 +69,10 @@ export class MainComponent implements OnDestroy{
     this.drawer.toggle(); // This will open/close the drawer
     this.toggleBodyScroll(this.drawer.opened && window.innerWidth <= 700);
   }
-
+  /**
+   * Toggles the body scroll based on the specified condition.
+   * @param shouldHideOverflow A boolean indicating whether to hide the overflow of the body.
+   */
 
   private toggleBodyScroll(shouldHideOverflow: boolean) {
 
@@ -62,7 +85,9 @@ export class MainComponent implements OnDestroy{
       this.renderer.removeClass(document.body, 'overflow-hidden');
     }
 
-
+ /**
+   * Logs the user out of the application.
+   */
   logOut() {
     this.authService.logout()
       .pipe(
@@ -76,7 +101,10 @@ export class MainComponent implements OnDestroy{
         this.router.navigate(['/login']);
       });
   }
-
+  /**
+   * Navigates to a specified path and closes the drawer on small screens.
+   * @param path The path to navigate to.
+   */
   navigateAndCloseDrawer(path: string) {
     this.router.navigate([path]).then(() => {
       if (window.innerWidth <= 700) {

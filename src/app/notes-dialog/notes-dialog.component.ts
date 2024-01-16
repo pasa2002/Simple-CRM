@@ -13,7 +13,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NotesDialogComponent implements OnInit {
 
   notes: any[] = [];
-
+  /**
+   * Constructs the Notes Dialog Component.
+   * @param dialogRef MatDialogRef for managing the dialog.
+   * @param notesService NotesService for managing notes.
+   * @param snackBar MatSnackBar for displaying notifications.
+   */
   constructor(
     public dialogRef: MatDialogRef<NotesDialogComponent>,
     private notesService: NotesService,
@@ -30,7 +35,11 @@ export class NotesDialogComponent implements OnInit {
   onNoClick() {
     this.dialogRef.close();
   }
-
+ /**
+   * Adds a new note.
+   * @param titleInput The HTMLInputElement for the note title.
+   * @param descriptionInput The HTMLInputElement or HTMLTextAreaElement for the note description.
+   */
   addNotes(titleInput: HTMLInputElement, descriptionInput: HTMLInputElement | HTMLTextAreaElement) {
     const title = titleInput.value.trim();
     const description = descriptionInput.value.trim();

@@ -1,3 +1,9 @@
+/**
+ * Represents the Customer Component.
+ * This component handles the display and management of players,
+ * including adding, editing, and deleting player information.
+ */
+
 import { AfterViewInit, Component , OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PlayerAddEditComponent } from '../player-add-edit/player-add-edit.component';
@@ -13,20 +19,37 @@ import { AuthService } from '../services/authentication.service';
 })
 
 export class CustomerComponent implements AfterViewInit, OnInit {
+   /** Array to store all player information. */
   allPlayers = [];
+  /** Instance of the Players class for handling player data. */
   player:Players = new Players();
+  /** ID of the player. */
   playerId = "";
+  /** Indicates whether the current user is a guest. */
   isGuest: boolean;
+
+    /**
+   * Constructs the Customer Component.
+   * @param dialog Service to handle Angular Material dialogs.
+   * @param firestore Service to interact with Angular Firestore.
+   * @param authService Service for authentication-related functionality.
+   */
   constructor(private dialog:MatDialog,
     private firestore: AngularFirestore,
     private authService: AuthService){}
 
+     /**
+   * Opens the form for adding or editing a player.
+   */
   openAddEditPlayerForm(){
     this.dialog.open(PlayerAddEditComponent)
   }
 
   ngAfterViewInit() {}
-
+ /**
+   * Initializes the component by subscribing to current user changes
+   * and fetching player data from Firestore.
+   */
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((user) => {
       this.isGuest = this.authService.getIsGuest();
@@ -39,7 +62,11 @@ export class CustomerComponent implements AfterViewInit, OnInit {
       });
   }
 
-
+  /**
+   * Deletes a player from Firestore and updates the local list.
+   * @param event The DOM event triggering the deletion.
+   * @param player The player to be deleted.
+   */
   deleteUser(event: Event, player: any): void {
     if (!this.isGuest) {
       // Prevent event propagation
@@ -59,7 +86,10 @@ export class CustomerComponent implements AfterViewInit, OnInit {
         });
     }
   }
-
+  /**
+   * Prevents event propagation.
+   * @param event The DOM event.
+   */
   stopPropagation(event: Event): void {
     event.stopPropagation();
   }

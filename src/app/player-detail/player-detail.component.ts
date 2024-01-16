@@ -11,7 +11,10 @@ import 'firebase/compat/firestore';
 import { ChartConfiguration, ChartData, ChartOptions, ChartType } from 'chart.js';
 import { MatTableDataSource } from '@angular/material/table';
 import { ChangeDetectorRef } from '@angular/core';
-
+/**
+ * PlayerDetailComponent displays detailed information about a player,
+ * including their scores in a chart and table.
+ */
 @Component({
   selector: 'app-player-detail',
   templateUrl: './player-detail.component.html',
@@ -67,7 +70,11 @@ export class PlayerDetailComponent implements OnInit{
     });
   }
 
-
+  /**
+   * Formats a Firestore timestamp into a readable date string.
+   * @param timestamp - The Firestore timestamp.
+   * @returns A formatted date string.
+   */
   formatFirestoreTimestamp(timestamp: any): string {
     if (timestamp && timestamp.seconds) {
       const date = new Date(timestamp.seconds * 1000); // Convert to milliseconds
@@ -172,14 +179,20 @@ saveScore(playerId: string, scoreId: string) {
     });
 }
 
-
+  /**
+   * Edits a player's score.
+   * @param element - The score element to edit.
+   */
 // Method to set the element as currently being edited
 editScore(element: any) {
   this.editingElement = element;
 }
 
 
-
+  /**
+   * Deletes a player's score.
+   * @param scoreId - The ID of the score to delete.
+   */
 deleteScore(scoreId: string): void {
   if (!scoreId) {
     console.error('No scoreId provided for deletion');
